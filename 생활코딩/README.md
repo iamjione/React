@@ -29,3 +29,15 @@ step3.  npx serve -s build // 접속할 수 있는 주소 나옴
 \- 컴포넌트 이름은 반드시 대문자로 시작해야함
 
 \- 함수 컴포넌트 / class 컴포넌트 가 있음
+
+\- 컴포넌트를 사용하면 여러 태그를 독립된 하나의 부품으로 만듦으로써 가독성이 좋아지고 컴포넌트의 공유가 가능해짐  
+   (코드의 복잡도 ↓ & 생산성 ↑)
+   
+<br>📍컴포넌트 사용 전
+<p>
+  <img src="https://user-images.githubusercontent.com/124686390/231524308-bd169436-0f34-49d0-9657-f26473baecba.png" height="400"/>&nbsp
+  <img src="https://user-images.githubusercontent.com/124686390/231524761-e84dbc55-39ca-471a-b4d2-0bc866804b7b.png" height="400"/>
+</p>
+<br>📍컴포넌트 사용 후
+<img src="https://user-images.githubusercontent.com/124686390/231527841-82c59f32-fd66-4e3d-95d8-e7951f21087c.png" width="500"/>
+
