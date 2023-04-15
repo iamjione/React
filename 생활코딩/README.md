@@ -41,3 +41,13 @@ step3.  npx serve -s build // 접속할 수 있는 주소 나옴
 <br>📍컴포넌트 사용 후
 <img src="https://user-images.githubusercontent.com/124686390/231527841-82c59f32-fd66-4e3d-95d8-e7951f21087c.png" width="500"/>
 
+<br>
+<br>
+## Props   
+
+\- props는 properties(속성)의 줄임말로 어떤 값을 컴포넌트에게 전달해줄 때 사용
+
+\- props의 자료형은 object
+
+\- props의 값을 출력하기 위해서는 중괄호{}를 사용해야함  
+  (중괄호를 쓰지 않으면 표현식이 아닌 그냥 문자열로 인식)
