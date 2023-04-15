@@ -42,7 +42,8 @@ step3.  npx serve -s build // 접속할 수 있는 주소 나옴
 <img src="https://user-images.githubusercontent.com/124686390/231527841-82c59f32-fd66-4e3d-95d8-e7951f21087c.png" width="500"/>
 
 <br>
-<br>
+<br>   
+
 ## Props   
 
 \- props는 properties(속성)의 줄임말로 어떤 값을 컴포넌트에게 전달해줄 때 사용
