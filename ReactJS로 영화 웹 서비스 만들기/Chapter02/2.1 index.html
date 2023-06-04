@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script>
+    const root = document.getElementById("root");
+    const span = React.createElement(
+      "span",
+      { id: "span-id", style: { color: "red" } },
+      "Hello, I'm a span"
+    ); //(element, property(id, style 등등), content)
+    const btn = React.createElement("button", null, "Click me");
+    ReactDOM.render(span, root); //span태그를 root에 위치시킴
+  </script>
+</html>
