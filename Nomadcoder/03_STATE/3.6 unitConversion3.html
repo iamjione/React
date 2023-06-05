@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root = document.getElementById("root");
+    //시간 변환 & 거리 변환
+
+    //시간 변환
+    function MinutesToHours() {
+      const [amount, setamount] = React.useState(0);
+      const [inverted, setInverted] = React.useState(false);
+      const onChange = (event) => {
+        setamount(event.target.value);
+      };
+      const reset = () => setamount(0);
+      const onInvert = () => {
+        reset();
+        setInverted((current) => !current);
+      };
+      return (
+        <div>
+          <div>
+            <label htmlfor="minutes">Minutes</label>
+            <input
+              id="minutes"
+              value={inverted ? amount * 60 : amount}
+              placehorder="Minutes"
+              type="number"
+              onChange={onChange}
+              disabled={inverted}
+            />
+          </div>
+          <div>
+            <label htmlfor="hours">Hours</label>
+            <input
+              id="Hours"
+              value={inverted ? amount : Math.round(amount / 60)}
+              placehorder="Hours"
+              type="number"
+              onChange={onChange}
+              disabled={!inverted}
+            />
+          </div>
+          <button onClick={reset}>Reset</button>
+          <button onClick={onInvert}>
+            {inverted ? "[분 -> 시간] 모드로 전환" : "[시간 -> 분] 모드로 전환"}
+          </button>
+        </div>
+      );
+    }
+
+    //거리 변환
+    function KmToMiles() {
+      const [distance, setDistance] = React.useState(0);
+      const [inverted, setInverted] = React.useState(false);
+      const onChange = (event) => {
+        setDistance(event.target.value);
+      };
+      const reset = () => setDistance(0);
+      const onInvert = () => {
+        reset();
+        setInverted((current) => !current);
+      };
+      return (
+        <div>
+          <div>
+            <label htmlfor="km">Kilometers</label>
+            <input
+              id="km"
+              value={inverted ? distance * 1.609344 : distance}
+              placehorder="Kilometers"
+              type="number"
+              onChange={onChange}
+              disabled={inverted}
+            />
+          </div>
+          <div>
+            <label htmlfor="miles">Miles</label>
+            <input
+              id="miles"
+              value={inverted ? distance : distance * 0.621371192237334}
+              placehorder="Miles"
+              type="number"
+              onChange={onChange}
+              disabled={!inverted}
+            />
+          </div>
+          <button onClick={reset}>Reset</button>
+          <button onClick={onInvert}>
+            {inverted ? "[km -> mile] 모드로 전환" : "[mile -> km] 모드로 전환"}
+          </button>
+        </div>
+      );
+    }
+
+    function App() {
+      const [index, setIndex] = React.useState("default");
+      const onSelect = (event) => {
+        setIndex(event.target.value);
+      };
+      return (
+        <div>
+          <h1>Super Converter</h1>
+          <select onChange={onSelect}>
+            <option value="default">단위를 선택하세요</option>
+            <option value="0">시간 변환</option>
+            <option value="1">거리 변환</option>
+          </select>
+          <hr />
+          {index === "default" ? "변환할 단위를 선택하세요." : null}
+          {index === "0" ? <MinutesToHours /> : null}
+          {index === "1" ? <KmToMiles /> : null}
+        </div>
+      );
+    }
+    ReactDOM.render(<App />, root);
+  </script>
+</html>

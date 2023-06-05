@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root = document.getElementById("root");
+    //useState를 이용한 더 좋은 방법_1
+    function App() {
+      //useState: [변수, 함수] 배열
+      let [counter, setCounter] = React.useState(0);
+      const onClick = () => {
+        setCounter(counter + 1); //counter변수를 업데이트해주고 리렌더링해줌!
+      };
+      console.log("rendered");
+      console.log(counter);
+      return (
+        <div>
+          <h3>Total clicks: {counter}</h3>
+          <button onClick={onClick}>Click me</button>
+        </div>
+      );
+    }
+    ReactDOM.render(<App />, root);
+  </script>
+</html>
