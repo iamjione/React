@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    function Btn({ text, onClick }) {
+      console.log(text, " was rendered");
+      //react memo를 사용하지 않으면 onClick으로 변화가 일어날 때 버튼 두개 모두 re-rendering됨
+      //==state에 변화가 생기면 모든 자식들이 re-rendering됨 >> 속도가 느려질 수 있음
+      return (
+        <button
+          onClick={onClick}
+          style={{
+            backgroundColor: "gray",
+            color: "white",
+            padding: "10px 20px",
+            border: 0,
+            borderRadius: 10,
+          }}
+        >
+          {text}
+        </button>
+      );
+    }
+
+    //변경이 없는 버튼의 re-rendering을 막기 위한 react memo
+    const MemorizedBtn = React.memo(Btn);
+
+    function App() {
+      const [value, setValue] = React.useState("Save Changes");
+      const changeValue = () => setValue("Revert Changes");
+      return (
+        //여기에 있는 onClick은 이벤트리스너가 아님! 그냥 props로 전달하는 데이터
+        //MemorizedBtn을 사용함으로써 변경 사항이 있는 자식들만 re-rendering됨
+        <div>
+          <MemorizedBtn text={value} onClick={changeValue} />
+          <MemorizedBtn text="Confirm" />
+        </div>
+      );
+    }
+    const root = document.getElementById("root");
+    ReactDOM.render(<App />, root);
+  </script>
+</html>

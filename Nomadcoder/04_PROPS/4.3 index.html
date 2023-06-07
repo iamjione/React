@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    function Btn({ text, fontSize = 14 }) {
+      //fontSize=14라고 쓰면 값이 없을 때 14를 기본값으로 지정함
+      return (
+        <button
+          style={{
+            backgroundColor: "gray",
+            color: "white",
+            padding: "10px 20px",
+            border: 0,
+            borderRadius: 10,
+            fontSize: fontSize,
+          }}
+        >
+          {text}
+        </button>
+      );
+    }
+
+    //props 타입 설정(타입 일치하지 않는 값 입력시 에러발생)
+    Btn.propTypes = {
+      text: PropTypes.string.isRequired, //isRequired 사용시 이 값 필수로 지정해줘야함
+      fontSize: PropTypes.numer,
+    };
+
+    function App() {
+      const [value, setValue] = React.useState("Save Changes");
+      const changeValue = () => setValue("Revert Changes");
+      return (
+        <div>
+          <Btn text={value} fontSize={18} />
+          <Btn text="Confirm" />
+        </div>
+      );
+    }
+    const root = document.getElementById("root");
+    ReactDOM.render(<App />, root);
+  </script>
+</html>
